@@ -1,5 +1,7 @@
 ﻿module Variables
 
+type MyRef<'a> = { mutable contents: 'a }
+
 let variablesFunc() =
 
     // Immutable variable
@@ -24,13 +26,17 @@ let variablesFunc() =
     printfn "referenceVariable.contents = %A" referenceVariable.contents
     referenceVariable.Value <- 200
     printfn "referenceVariable = %A" referenceVariable
+    referenceVariable.contents <- 300
+    printfn "referenceVariable = %A" referenceVariable
 
     // Tuple
-    let tuple = 1,2,3
+    let tuple = 1,2,3,"a string"
     printfn "tuple = %A" tuple
-    let x,y,z = tuple
+    let x,y,z,s = tuple
+    printfn "tuple x=%A; y=%A; z=%A; s=%A" x y z s
 
-    printfn "tuple x=%A; y=%A; z=%A" x y z
-
+    let twople = 1,2
+    printfn "tuple fst = %A" (twople |> fst)
+    printfn "tuple snd = %A" (twople |> snd)
 
 
